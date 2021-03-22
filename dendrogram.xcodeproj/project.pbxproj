@@ -62,6 +62,7 @@
 		832E9623260371DE00C08562 /* libopencv_ccalib.4.5.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 832E95ED260371DC00C08562 /* libopencv_ccalib.4.5.1.dylib */; };
 		832E9624260371DE00C08562 /* libopencv_hfs.4.5.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 832E95EE260371DC00C08562 /* libopencv_hfs.4.5.1.dylib */; };
 		832E9625260371DE00C08562 /* libopencv_videostab.4.5.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 832E95EF260371DC00C08562 /* libopencv_videostab.4.5.1.dylib */; };
+		832E96282603D11D00C08562 /* dendogram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 832E96262603D11D00C08562 /* dendogram.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -133,6 +134,8 @@
 		832E95ED260371DC00C08562 /* libopencv_ccalib.4.5.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_ccalib.4.5.1.dylib; path = ../../../../../../usr/local/Cellar/opencv/4.5.1_2/lib/libopencv_ccalib.4.5.1.dylib; sourceTree = "<group>"; };
 		832E95EE260371DC00C08562 /* libopencv_hfs.4.5.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_hfs.4.5.1.dylib; path = ../../../../../../usr/local/Cellar/opencv/4.5.1_2/lib/libopencv_hfs.4.5.1.dylib; sourceTree = "<group>"; };
 		832E95EF260371DC00C08562 /* libopencv_videostab.4.5.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_videostab.4.5.1.dylib; path = ../../../../../../usr/local/Cellar/opencv/4.5.1_2/lib/libopencv_videostab.4.5.1.dylib; sourceTree = "<group>"; };
+		832E96262603D11D00C08562 /* dendogram.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = dendogram.cpp; sourceTree = "<group>"; };
+		832E96272603D11D00C08562 /* dendogram.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = dendogram.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,6 +277,8 @@
 			isa = PBXGroup;
 			children = (
 				832E95B3260370DF00C08562 /* main.cpp */,
+				832E96262603D11D00C08562 /* dendogram.cpp */,
+				832E96272603D11D00C08562 /* dendogram.hpp */,
 			);
 			path = dendrogram;
 			sourceTree = "<group>";
@@ -336,6 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				832E95B4260370DF00C08562 /* main.cpp in Sources */,
+				832E96282603D11D00C08562 /* dendogram.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
