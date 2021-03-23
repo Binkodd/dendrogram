@@ -145,8 +145,7 @@ static void draw_grid(cv::Mat & img, const std::vector<std::pair<cv::Point2f, st
     
 }
 
-
-void draw(const std::vector<cv::Point2f>& points, const std::vector<std::string>& labels) {
+cv::Mat get_dendrogram(const std::vector<cv::Point2f>& points, const std::vector<std::string>& labels) {
        cv::Mat img(1024, 1024, CV_8UC1, cv::Scalar(255, 255, 255));
        
        std::vector<std::pair<cv::Point2f, std::string>> pts;
@@ -182,7 +181,14 @@ void draw(const std::vector<cv::Point2f>& points, const std::vector<std::string>
            
           
        }
-       cv::imshow("Output", img);
-       cv::waitKey(0);
-       
-   }
+    return img;
+}
+void draw_dendrogram(const std::vector<cv::Point2f>& points, const std::vector<std::string>& labels) {
+    cv::Mat img = get_dendrogram(points, labels);
+    cv::imshow("Dedrogram", img);
+    cv::waitKey(0);
+}
+void save_dendrogram(const std::vector<cv::Point2f>& points, const std::vector<std::string>& labels, std::string path) {
+    cv::Mat img = get_dendrogram(points, labels);
+    cv::imwrite(path, img);
+}

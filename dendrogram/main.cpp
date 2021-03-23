@@ -41,7 +41,9 @@ int main(int argc, char** argv) {
     }
     in.close();
         
-    draw(points, labels);
+    Mat img  = get_dendrogram(points, labels);
+    imshow("Out", img);
+    waitKey(0);
     
     return 0;
     

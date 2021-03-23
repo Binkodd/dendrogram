@@ -56,10 +56,12 @@ static std::vector<cv::Point2f> dendrogram_points(const std::vector<std::pair<cv
 // min_height - значение нормы точки, с наименьшей длиной радиус вектора из всех изначальных
 static void draw_grid(cv::Mat & img, const std::vector<std::pair<cv::Point2f, std::string>> pts, int xdev, int ydev, float dist_mult, float height_mult, float max_dist, float min_height);
 
-// основная функция построения дендрограммы
-// points - вектор точек
-// labels - вектор меток (названий) точек
-// НАДО РАЗБИТЬ НА ФУНКЦИИ
-void draw(const std::vector<cv::Point2f>& points, const std::vector<std::string>& labels);
+
+cv::Mat get_dendrogram(const std::vector<cv::Point2f>& points, const std::vector<std::string>& labels);
+
+void draw_dendrogram(const std::vector<cv::Point2f>& points, const std::vector<std::string>& labels);
+
+void save_dedrogram(const std::vector<cv::Point2f>& points, const std::vector<std::string>& labels, std::string path);
+
 
 #endif /* dendogram_hpp */
