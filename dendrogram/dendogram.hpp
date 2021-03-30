@@ -13,19 +13,29 @@
 #include <string>
 #include <vector>
 
-
-// Вспомогательный класс, использующийся для построения дендрограмм. Содержит в себе информацию о кол-ве точек
-// в кластере и центр кластера (для построения используется метод медиан - Median clustering).
+/*!
+ \brief Вспомогательный класс, использующийся для построения дендрограмм.
+ Содержит в себе информацию о кол-ве точек в кластере и центр кластера (для построения используется метод медиан - Median clustering).
+ */
 class Cluster {
 public:
-    Cluster(const cv::Point2f p);   // Создает кластер из точки
+    /*!
+     Конструктор, создающий кластер из одной точки
+     \param p Исходная точки
+     \param height Аргумент, отвечающий за нахождение кластера по Y-оси
+     */
+    Cluster(const cv::Point2f p, float height);
+    /*!
+     Конструктор, объединяющий два кластера в один
+     */
     Cluster(const Cluster& lhs, const Cluster& rhs); // Объединияет 2 кластера и создает новый
     
-    const float get_dist(); // Возвращает
-    const float get_height(); // Возвращает height -
+    const float get_dist(); // Возвращает внутрикласстерное расстояние по X-оси
+    const float get_height(); // Возвращает нахождение кластера по Y-оси
+    const cv::Point2f get_center() const; //
     
-    // Возвращает кортеж с индексами самых ближайших кластеров
-    static std::tuple<float, float> find_min_dist_indices(const std::vector<Cluster> &clusters);
+    // Возвращает кортеж с индексами самых ближайших кластеров в векторе
+    
     
     // Возвращает расстояние между двумя кластерами
     const float get_dist_between(const Cluster& rhs) const;
@@ -37,31 +47,38 @@ private:
     int size;  // кол-во точек в кластере
 };
 
+std::tuple<float, float> find_min_dist_indices(const std::vector<Cluster> &clusters);
+
 // Компаратор для пар <точка, метка>. Метка - "название" точки
-static bool sort_points_labels(const std::pair<cv::Point2f, std::string> & a, const std::pair<cv::Point2f, std::string> &b);
+bool sort_points_labels(const std::pair<cv::Point2f, std::string> & a, const std::pair<cv::Point2f, std::string> &b);
 
-// Возвращает вектор точек, которые используются при постройке дендрограммы
-static std::vector<cv::Point2f> dendrogram_points(const std::vector<std::pair<cv::Point2f, std::string>>& points);
+/*!
+ Из исходных данных получает точки для построения дендрограммы
+ \param points Вектор пар<точка, метка> - отсортированные исходные данные
+ \return Вектор точек для построения дендрограммы. Точки n и n+1 образуют отрезок, где n - четное натуральное число
+ */
+std::vector<cv::Point2f> dendrogram_points(const std::vector<std::pair<cv::Point2f, std::string>>& points);
 
-// Рисует сетку, метки и другие обозначения для дендрограммы
-// img - cv::Mat с дедрограммой, где рисуем сетку
-// pts - изначальные входные данные - вектор пар <точка, метка>
+/*!
+ Рисует оси, метки и другие вспомогательные обозначения для дендрограммы
+ \param[in,out] img cv::Mat на котором рисуются все обозначения
+ \param[in] pts Отсортированные изначальные входные данные, требуются для построения меток
+ \param[in] xdev Отступ по X-оси
+ \param[in] ydev Отступ по Y-оси
+ \param[in] dist_mult Мультипликатор по X-оси
+ \param[in] height_mult Мультипликатор по Y-оси
+ \param[in] min_height Значение нормы минимальной точки из изначальных. Используется в кач-ве точки отсчета
+ */
+void draw_grid(cv::Mat & img, const std::vector<std::pair<cv::Point2f, std::string>> pts, int xdev, int ydev, float dist_mult, float height_mult, float max_dist, float min_height);
 
-//----__!!!!!! Поменять отступы на статические
-// xdev - отступ по X-оси!!!!!!!!!!
-// ydev - отступ по Y-оси
-// height_mult, dist_mult
-//-----!!!!!!!!!!!
+/*!
+ Основная функция построения дендрограммы
+ \param points Вектор точек
+ \param labels Вектор меток (обозначений) для точек. Необязательный параметр. Если он отсутствует или размер вектора не совпадает с размером вектора точек, то используется нумерация 1, 2, 3 ...
+ \return cv::Mat с постороенное дендрограммой и всеми обозначениями
+ */
 
-// min_height - значение нормы точки, с наименьшей длиной радиус вектора из всех изначальных
-static void draw_grid(cv::Mat & img, const std::vector<std::pair<cv::Point2f, std::string>> pts, int xdev, int ydev, float dist_mult, float height_mult, float max_dist, float min_height);
-
-
-cv::Mat get_dendrogram(const std::vector<cv::Point2f>& points, const std::vector<std::string>& labels);
-
-void draw_dendrogram(const std::vector<cv::Point2f>& points, const std::vector<std::string>& labels);
-
-void save_dedrogram(const std::vector<cv::Point2f>& points, const std::vector<std::string>& labels, std::string path);
+cv::Mat get_dendrogram(const std::vector<cv::Point2f>& points, const std::vector<std::string>& labels= {});
 
 
 #endif /* dendogram_hpp */
