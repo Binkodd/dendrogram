@@ -1,0 +1,6 @@
+project(dendogram_library_test)
+add_executable(dendogram_library_test test.cpp)
+find_package(OpenCV REQUIRED)
+include_directories(${OpenCV_INCLUDE_DIRS})
+target_link_libraries(dendogram_library_test ${OpenCV_LIBS})
+target_link_libraries(dendogram_library_test dendogram_library)
