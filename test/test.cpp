@@ -1,6 +1,6 @@
 
 #include <fstream>
-#include "dendogram.hpp"
+#include "dendrogram.hpp"
 
 int main(int argc, char** argv) {
 

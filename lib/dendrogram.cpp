@@ -6,7 +6,7 @@
 //  Copyright © 2021 Данил Шумков. All rights reserved.
 //
 
-#include "dendogram.hpp"
+#include "dendrogram.hpp"
 
 Cluster::Cluster(const cv::Point2f p, float h){
     center = p;
