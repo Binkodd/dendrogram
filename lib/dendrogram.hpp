@@ -29,10 +29,13 @@ public:
      \brief Конструктор, объединяющий два кластера в один
      */
     Cluster(const Cluster& lhs, const Cluster& rhs); // Объединияет 2 кластера и создает новый
-
-    const float get_dist(); /// \brief Возвращает внутрикласстерное расстояние по X-оси
-    const float get_height(); /// \brief Возвращает нахождение кластера по Y-оси
-    const cv::Point2f get_center() const; /// \brief Возвращает центр кластера в виде точки
+    
+    /// \brief Возвращает внутрикласстерное расстояние по X-оси
+    const float get_dist();
+    /// \brief Возвращает нахождение кластера по Y-оси
+    const float get_height();
+    /// \brief Возвращает центр кластера в виде точки
+    const cv::Point2f get_center() const;
     
     
     /*!

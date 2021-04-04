@@ -9,7 +9,7 @@ int main(int argc, char** argv) {
     float num1, num2;
     
     std::string line;
-    std::ifstream in ("data/coord.txt");
+    std::ifstream in ("coord.txt");
     if (in.is_open())
     {
         while (in >> num1) {
@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
     // Считываем данные в вектор меток
     std::vector<std::string> labels;
     std::string label;
-    in = std::ifstream("data/city_names.txt");
+    in = std::ifstream("city_names.txt");
     if (in.is_open())
     {
         while (getline(in, label)) {
