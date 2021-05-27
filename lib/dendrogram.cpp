@@ -197,7 +197,7 @@ cv::Mat get_dendrogram(const std::vector<cv::Point2f>& points, const std::vector
                 
             cv::Point2f(ptd[i+1].x * dist_mult + xdev,
                         ptd[i+1].y * 0.8 + 2 * ydev),
-            0, 1.5
+            0, 1
         );
     }
     return img;
