@@ -4,3 +4,5 @@ find_package(OpenCV REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
 target_link_libraries(dendrogram_library_test ${OpenCV_LIBS})
 target_link_libraries(dendrogram_library_test dendrogram_library)
+
+install(DIRECTORY test DESTINATION bin)

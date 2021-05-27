@@ -46,7 +46,7 @@ std::pair<float, float> find_min_dist_indices(const std::vector<Cluster> &cluste
             }
         }
     }
-    return std::tuple<float, float>(ind1, ind2);
+    return std::pair<float, float>(ind1, ind2);
 }
 const float Cluster::get_dist_between(const Cluster& rhs) const {
     return norm(this->center - rhs.center);
