@@ -22,10 +22,3 @@ install(TARGETS ${PROJECT_NAME}
         DESTINATION dbg/lib
         PUBLIC_HEADER
         DESTINATION dbg/include)
-
-install(TARGETS ${PROJECT_NAME}
-        CONFIGURATIONS Release
-        LIBRARY
-        DESTINATION rel/lib
-        PUBLIC_HEADER
-        DESTINATION rel/include)
